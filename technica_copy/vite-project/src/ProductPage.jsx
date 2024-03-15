@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 
 
 import Footer from './Footer'
-function App() {
+function Product({id}) {
   const [fake,setFake] =  useState([]);
   console.log(fake);
   useEffect(()=>{
@@ -20,8 +20,8 @@ function App() {
     setFake(jsonData);
   }
   fakestore();
-
-  const desiredIds = [4, 5, 8];
+  console.log(id)
+  const desiredIds = [id];
 
   // Filter the list using filter() method
   const filteredFake = fake.filter((item) => desiredIds.includes(item.id));
@@ -29,30 +29,30 @@ function App() {
   console.log(fake)
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="container">
       
-      {fake.map((values)=>{
+      {filteredFake.map((values)=>{
         return(
           <>
-          <a href='../ProductPage.html'><div className="card" style={{width: "18rem", margin:"2rem"}}>
-                <img src={values.image} className="card-img-top" alt="imagehere"/>
+          <div className="card" style={{width: "80%",  margin:"2rem"}}>
+                <img src={values.image} className="card-img-top" alt="imagehere" style={{width:"50%", height:"50%"}}/>
                 <div className="card-body">
                     <h5 className="card-title">{values.title}</h5>
                     <p className="card-text">{values.description}</p>
                     <a href="" className="btn btn-primary">${values.price}</a>
                 </div>
-            </div></a>
+            </div>
           </>
         )
       })}
         
       </div>
-      <Footer/>
+      {/* <Footer/> */}
       
     </>
 
   )//   })
 }
 
-export default App
+export default Product
