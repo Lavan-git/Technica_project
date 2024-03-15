@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Navbar'
-
+import RatingsAndReviews from './Review'
 
 import Footer from './Footer'
 function Product({id}) {
@@ -48,6 +48,7 @@ function Product({id}) {
       })}
         
       </div>
+      <RatingsAndReviews/>
       {/* <Footer/> */}
       
     </>

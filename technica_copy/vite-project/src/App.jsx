@@ -33,9 +33,13 @@ function App() {
       <div className="container">
       
       {fake.map((values)=>{
+        function passVal(){
+          console.log(values.id);
+          localStorage.setItem( 'objectToPass', values.id);
+        }
         return(
           <>
-          <a href='../ProductPage.html'><div className="card" style={{width: "18rem", margin:"2rem"}}>
+          <a href='../ProductPage.html' onClick={passVal}><div className="card" style={{width: "18rem", margin:"2rem"}}>
                 <img src={values.image} className="card-img-top" alt="imagehere"/>
                 <div className="card-body">
                     <h5 className="card-title">{values.title}</h5>
