@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Input from './Input'; // Custom component for input fields (explained later)
-// import PhoneNumberInput from 'react-phone-number-input';
-// import './Signup.css';
+import Input from './Input'; // Custom component for input fields
+
 function Signup() {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,19 +19,18 @@ function Signup() {
 
   const validateForm = () => {
     let error = {};
-    // Name validation (replace with your desired logic)
+    // Name validation
     if (!formData.name) {
       error.name = 'Name is required';
     }
-    // Phone number validation (handled by react-phone-number-input)
 
-    // Email validation (using regular expression)
+    // Email validation
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(formData.email)) {
       error.email = 'Invalid email format';
     }
 
-    // Password validation (replace with your desired complexity requirements)
+    // Password validation
     if (formData.password.length < 8) {
       error.password = 'Password must be at least 8 characters long';
     }
@@ -42,7 +40,7 @@ function Signup() {
       error.confirmPassword = 'Passwords do not match';
     }
 
-    // OTP validation (placeholder, replace with your logic)
+    // OTP validation
     if (!formData.otp) {
       error.otp = 'OTP is required';
     }
@@ -56,36 +54,41 @@ function Signup() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      // Form is valid, submit data (replace with your logic)
+      // Form is valid, submit data
       console.log('Form Submitted:', formData);
+      // Implement submission logic here (e.g., send data to server)
     }
   };
 
   return (
     <div className="container mt-5">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <Input label="Name" name="name" value={formData.name} onChange={handleChange} error={errors.name} />
-        {/* <PhoneNumberInput style = {{width: "30px"}}
-          value={formData.phone}
-          onChange={(value) => setFormData({ ...formData, phone: value })}
-          placeholder="Enter phone number"
-        /> */}
-        <Input label="Email" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
-        <Input label="Password" name="password" type="password" value={formData.password} onChange={handleChange} error={errors.password} />
-        <Input label="Re-enter Password" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} error={errors.confirmPassword} />
-        <Input label="OTP" name="otp" value={formData.otp} onChange={handleChange} error={errors.otp} />
-        <button type="submit" className="btn btn-primary">
-          Sign Up
-        </button>
-      </form>
-      {Object.keys(errors).length > 0 && (
-        <div className="alert alert-danger" role="alert">
-          {Object.values(errors).map((error) => (
-            <p key={error}>{error}</p>
-          ))}
+      <div className="row justify-content-center"> {/* Center align the row */}
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h2 className="card-title text-center">Sign Up</h2>
+              <form onSubmit={handleSubmit}>
+                <Input label="Name" name="name" value={formData.name} onChange={handleChange} error={errors.name} />
+                {/* <Input label="Phone" name="phone" value={formData.phone} onChange={handleChange} error={errors.phone} /> */}
+                <Input label="Email" name="email" type="email" value={formData.email} onChange={handleChange} error={errors.email} />
+                <Input label="Password" name="password" type="password" value={formData.password} onChange={handleChange} error={errors.password} />
+                <Input label="Re-enter Password" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} error={errors.confirmPassword} />
+                <Input label="OTP" name="otp" value={formData.otp} onChange={handleChange} error={errors.otp} />
+                <button type="submit" className="btn btn-primary">
+                  Sign Up
+                </button>
+              </form>
+              {Object.keys(errors).length > 0 && (
+                <div className="alert alert-danger" role="alert">
+                  {Object.values(errors).map((error, index) => (
+                    <p key={index}>{error}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

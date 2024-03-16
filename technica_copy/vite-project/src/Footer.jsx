@@ -8,7 +8,7 @@ function Footer() {
     <footer className="footer bg-dark text-light py-5">
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6" style={{textAlign:"left"}}>
             <h2>Contact Us</h2>
             <p>Email: harshitsharma182021@gmail.com</p>
             <p>Phone: 923456324</p>

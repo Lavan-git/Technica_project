@@ -1,0 +1,21 @@
+.vendor-page {
+    padding: 20px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .page-title {
+    text-align: center;
+    color: black;
+    font-family: calibri;
+    font-style: italic;
+  }
+  
+  .radio-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  
